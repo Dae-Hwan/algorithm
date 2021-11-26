@@ -19,5 +19,6 @@ for i in range(2, n + 1):
     comparison.append(n_stack_list[minus - 1])
 
     n_stack_list.append(min(i for i in comparison) + 1) # 맨마지막에 지금 한 행동을 추가해줘야하기 때문
+    print(n_stack_list)
 
-print(n_stack_list[-1]) # 가장 최신의 값을 빼줌
+print(n_stack_list[-1])  # 가장 최신의 값을 빼줌
