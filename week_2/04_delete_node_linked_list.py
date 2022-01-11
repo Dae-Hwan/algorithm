@@ -40,6 +40,9 @@ class LinkedList:
         node.next = new_node
         new_node.next = next_node
 
+    def delete_node(self, index):
+        node = self
+
 
 linked_list = LinkedList(5)
 linked_list.append(12)
