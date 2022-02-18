@@ -4,7 +4,6 @@ from collections import deque
 n, m, v = map(int, sys.stdin.readline().split())
 graph = [[] for _ in range(n + 1)]
 visited = [False] * (n + 1)  # 정점의 숫자 + 1만큼 만듬
-# print(graph, visited)
 
 for _ in range(m):
     a, b = map(int, sys.stdin.readline().split())
@@ -22,7 +21,7 @@ def dfs(n):
     print(n, end=' ')
     visited[n] = True  # visited [False, False, False, False, False]
     for i in graph[n]:
-        if visited[i] == False:
+        if not visited[i]:
             dfs(i)
 
 
