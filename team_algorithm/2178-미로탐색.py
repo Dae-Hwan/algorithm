@@ -14,6 +14,7 @@ for i in range(n + 2):
         maze.append([0] + list(map(int, sys.stdin.readline().strip())) + [0])
 
 
+
 # 너비 우선 탐색
 def bfs(x, y, n, m):
     count = 0
@@ -56,6 +57,3 @@ def bfs(x, y, n, m):
 
 
 bfs(1, 1, n + 1, m + 1)
-
-
-# 실수 -> 거리탐색인데 dfs로 풀라했다.
