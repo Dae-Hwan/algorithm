@@ -4,13 +4,13 @@ n = int(sys.stdin.readline())
 m = int(sys.stdin.readline())
 
 graph = [[] for _ in range(n + 1)]
+print(graph)
 for _ in range(m):
     x, y = map(int, sys.stdin.readline().split())
     graph[x].append(y)
     graph[y].append(x)
 
-visited = [0] * (n + 1)
-
+visited = [False] * (n + 1)
 print(graph)
 
 
@@ -25,4 +25,4 @@ def dfs(graph, v, visited):
 
 dfs(graph, 1, visited)
 
-print(sum(visited) - 1)  # 방문한 컴퓨터 개수 - 1번 컴퓨터
+print(sum(visited) - 1)
