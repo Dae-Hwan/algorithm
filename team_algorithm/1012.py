@@ -11,8 +11,10 @@ def bfs(graph, a, b):
     queue.append((a, b))
 
     while queue:
+        # 큐에서 뽑아낸 숫자 a, b
         a, b = queue.popleft()
 
+        # 상하좌우 넣어봐서 있으면 큐에 추가하기
         for i in range(4):
             moved_a = a + plus_a[i]
             moved_b = b + plus_b[i]
@@ -46,4 +48,3 @@ for _ in range(T):
                 count += 1
 
     print(count)
-
