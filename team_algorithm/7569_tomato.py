@@ -4,7 +4,6 @@ from collections import deque
 # M = 가로 N = 세로 H = 높이
 M, N, H = map(int, sys.stdin.readline().split())
 graph = []
-count = 0
 
 for h in range(H):
     graph.append([])
@@ -16,8 +15,6 @@ print(graph)
 
 
 def bfs(graph, h, n, m):
-    count = 0
-
     # 상하좌우
     plus_h = [0, 0, 0, 0, -1, 1]
     plus_n = [-1, 1, 0, 0, 0, 0]
@@ -27,7 +24,6 @@ def bfs(graph, h, n, m):
     queue.append((h, n, m))
 
     while queue:
-        count += 1
         # 큐에서 뽑아낸 숫자 a, b
         queue_h, queue_n, queue_m = queue.popleft()
 
@@ -37,16 +33,23 @@ def bfs(graph, h, n, m):
             moved_n = queue_n + plus_n[i]
             moved_m = queue_m + plus_m[i]
 
-            # moved_h가 0 이거나 범위안에들고
-            if 0 <= moved_h < h and 0 <= moved_n < n and 0 < moved_m < m:
-                # 토마토가 안익었다면 익혀주기
-                if graph[moved_h][moved_n][moved_m] == 0:
-                    graph[moved_h][moved_n][moved_m] = 1
-                    queue.append((queue_h, moved_n, moved_m))
-
-            if graph[queue_h][moved_n][moved_m] == 1:
+            # 토마토가 안들어있는 칸이면 넘어가
+            if graph[queue_h][moved_n][moved_m] == -1:
                 continue
 
+            # 토마토가 안익었다면 익혀주기
+            elif graph[moved_h][moved_n][moved_m] == 0:
+                graph[moved_h][moved_n][moved_m] = graph[queue_h][queue_n][queue_m] + 1
+                queue.append((moved_h, moved_n, moved_m))
+                print(graph)
 
-bfs(graph, h, n, m)
 
+bfs(graph, 0, 0, 0)
+
+present_max = 0
+for h in range(H):
+    for n in range(N):
+        for m in range(M):
+            present_max = max(present_max, graph[h][n][m])
+
+print(present_max)
