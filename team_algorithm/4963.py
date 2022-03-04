@@ -41,5 +41,3 @@ for h in range(H):
             count += 1
             bfs(h, w)
 print(count)
-
-## 아이디어
