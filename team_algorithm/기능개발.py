@@ -9,11 +9,15 @@ def solution(progresses, speeds):
             speeds.pop(0)
             count += 1
         else:
+            days += 1
             if count > 0:
                 answer.append(count)
                 count = 0
-            days += 1
 
     answer.append(count)
 
     return answer
+
+
+print(solution([93, 30, 55], [1, 30, 5]))
+print(solution(	[95, 90, 99, 99, 80, 99], [1, 1, 1, 1, 1, 1]))
